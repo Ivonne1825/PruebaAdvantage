@@ -9,6 +9,11 @@
   "author": "\"ADC\"",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.6.0"
+    "cypress": "^12.6.0",
+    "cypress-mysql": "^1.0.0",
+    "mysql": "^2.18.1"
+  },
+  "dependencies": {
+    "mysql2": "^3.2.0"
   }
 }

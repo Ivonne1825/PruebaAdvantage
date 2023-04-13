@@ -1,16 +1,36 @@
-import LoginPO from "../e2e/login/loginPO"; // Importar (traer el archivo donde está mi clase.)
+// *****************
+// This example commands.js shows you how to
+// create various custom commands and overwrite
+// existing commands.
+//
+// For more comprehensive examples of custom
+// commands please read more here:
+// https://on.cypress.io/custom-commands
+// *****************
+//
+//
+// -- This is a parent command --
+// Cypress.Commands.add('login', (email, password) => { ... })
+//
+//
+// -- This is a child command --
+// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
+//
+//
+// -- This is a dual command --
+// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
+//
+//
+// -- This will overwrite an existing command --
+// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-const login = new LoginPO() // Instanciando la clase; construyendo la clase y almaceno la clase dentro de una constante. 
 
-Cypress.Commands.add("LoginMariaCrack", function (user, password, assert) { // Cree un comando para agregar una función/método que puedo utilizar varias veces.
-    login.buttonLoginNav().click(); // login. = Acá estoy accediendo a los métodos que tengo en la clase para seleccionar los elementos clickeables. 
-    login.modalLogin().should('be.visible');
 
-    login.inputUserName().type(user, { force: true }).should('have.value', user);
-    login.inputPassword().type(password, { force: true }).should('have.value', password);
 
-    login.startSession().click();
+/// <reference types="Cypress" />   //
+Cypress.Commands.add('visitUrl', () => {
 
-    login.assertBody().contains(assert).should('be.visible');
-});
+    cy.visit(Cypress.env("baseUrlDemoQA"));
+    cy.url().should('include', Cypress.env("baseUrlDemoQA"));
 
+})
